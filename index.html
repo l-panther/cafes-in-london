@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Cafes in London | Best Places to Eat</title>
+  <meta name="description" content="Discover the best cafes in London. Vegetarian and meat options. Explore with our interactive map.">
+  <meta name="keywords" content="London cafes, cafes in London, best cafes London, where to eat in London, vegetarian cafes London, food London, coffee shops London, food spots London, best coffee London, London cafes map">
+  <meta name="author" content="Leroy Russell">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cafes in London | Best Places to Eat">
+  <meta property="og:description" content="Discover the best cafes in London with vegetarian and meat options.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta property="og:image" content="https://yourdomain.com/images/logo/logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cafes in London | Best Places to Eat">
+  <meta name="twitter:description" content="Discover the best cafes in London with vegetarian and meat options.">
+  <meta name="twitter:image" content="https://yourdomain.com/images/logo/logo.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/apple-touch-icon.png">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+</head>
+<body>
+  <noscript>
+    <div role="alert" class="no-js w3-medium">
+      <h2>JavaScript is disabled</h2>
+      <p>This website requires JavaScript for essential functionality. Please enable JavaScript in your browser settings.</p>
+    </div>
+  </noscript>
+
+  <a href="#main-content" class="skip-link" title="Skip to main content" tabindex="0">Skip to main content</a>
+
+  <button class="menu-fab" id="menuFab" type="button" aria-controls="siteDrawer" aria-expanded="false" aria-label="Open menu">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <!-- Drawer -->
+  <div class="drawer" id="siteDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerLabel" aria-hidden="true">
+    <div class="drawer-head">
+      <span id="drawerLabel">Menu</span>
+      <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="Section navigation">
+      <a href="#home" class="drawer-link">Home</a>
+      <a href="#cafes" class="drawer-link">Featured Cafes</a>
+      <a href="#map" class="drawer-link">Map</a>
+    </nav>
+    <div class="social-row">
+      <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7c-.28-.04-1.25-.12-2.37-.12-2.35 0-3.96 1.43-3.96 4.06V10H7.6v3.1h2.77V21h3.13Z"/></svg></a>
+      <a href="#" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.7 11.7 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.8 2.9A8.2 8.2 0 0 1 2 18.4a11.6 11.6 0 0 0 6.3 1.8c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1Z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></a>
+    </div>
+  </div>
+
+  <!-- Header-->
+  <header class="hero" id="home">
+    <div class="hero-content wrap">
+      <h1 class="hero-title">Discover<br><span class="accent">Great</span> Food</h1>
+      <p class="hero-sub">Looking for the right place to eat? Explore the great places to eat in London.</p>
+      <a class="hero-arrow" href="#cafes" aria-label="Scroll down">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Tabs -->
+  <nav class="tabs" id="tabs">
+    <a href="#cafes" data-tab="cafes" class="is-active">Cafes</a>
+    <a href="#map" data-tab="map">Map</a>
+    <div class="spacer"></div>
+  </nav>
+
+  <!-- Main -->
+  <main id="main-content">
+    <!-- Cafe list -->
+    <section class="featured" id="cafes">
+      <div class="wrap">
+        <h2><span class="accent">Featured</span> Cafes</h2>
+
+        <div class="intro">
+          <p>London is one of the most vibrant cities in England, celebrated for its cultural diversity and the endless variety of things to see and do. With such a wide selection of food available across the city, finding a great place to eat can sometimes feel overwhelming. Whether you are vegetarian or a meat lover, discovering the perfect caf&eacute; can be a challenge.</p>
+          <p>To make your search easier, we have carefully selected four of the best caf&eacute;s in London, offering something for everyone. From cosy neighbourhood favourites to well-known city icons, these caf&eacute;s stand out for their quality, atmosphere, and great food.</p>
+          <p>Each location has been chosen for its unique character, welcoming environment, and consistently positive customer reviews, ensuring that you can enjoy a satisfying and memorable dining experience wherever you choose to go.</p>
+        </div>
+
+        <div class="card-list">
+
+          <!-- Cafe 1 -->
+          <article class="cafe-card">
+            <img src="/assets/images/main/hardrock.png" alt="">
+            <div>
+              <h3 class="cafe-name">Hard Rock Cafe</h3>
+              <div class="cafe-meta-row">
+                <span class="stars">★★★★☆</span>
+                <a class="rating-count" href="#">102 ratings</a>
+              </div>
+              <div class="cafe-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                150 Old Park Ln, W1K
+              </div>
+              <span class="cafe-tag">Meat &amp; Vegetarian</span>
+              <p class="cafe-desc">The Hard Rock Cafe is located on Old Park Lane since 1941, where it was the first cafe where the classes mingled. The food has <em>American</em> favorites like the classic burgers and salads made from the <em>freshest</em> ingredients.</p>
+            </div>
+          </article>
+
+          <!-- Cafe 2 -->
+          <article class="cafe-card tag-veg">
+            <img src="/assets/images/main/gallery.png" alt="">
+            <div>
+              <h3 class="cafe-name">Gallery Cafe</h3>
+              <div class="cafe-meta-row">
+                <span class="stars">★★★★☆</span>
+                <a class="rating-count" href="#">6 ratings</a>
+              </div>
+              <div class="cafe-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                21 Old Ford Rd, E2
+              </div>
+              <span class="cafe-tag">Vegetarian</span>
+              <p class="cafe-desc">The Gallery Cafe has a long history which dates back to 1888. This history led to the full purchase of numbers 15 and 17 Old Ford Road in 1999. A <em>vegan</em> and <em>vegetarian</em> menu, exhibitions and live events every month.</p>
+            </div>
+          </article>
+
+          <!-- Cafe 3 -->
+          <article class="cafe-card">
+            <img src="/assets/images/main/regency.png" alt="">
+            <div>
+              <h3 class="cafe-name">Regency Cafe</h3>
+              <div class="cafe-meta-row">
+                <span class="stars">★★★☆☆</span>
+                <a class="rating-count" href="#">17 ratings</a>
+              </div>
+              <div class="cafe-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                17-19 Regency St, SW1P
+              </div>
+              <span class="cafe-tag">Meat</span>
+              <p class="cafe-desc">The Regency Cafe first opened its doors in 1946 on Regency Street. This <em>popular</em> cafe has previously been voted the <em>fifth</em> best place to eat in London on Yelp in 2013. The cafe design is an art deco style.</p>
+            </div>
+          </article>
+
+          <!-- Cafe 4 -->
+          <article class="cafe-card tag-veg">
+            <img src="/assets/images/main/table.png" alt="">
+            <div>
+              <h3 class="cafe-name">The Table Cafe</h3>
+              <div class="cafe-meta-row">
+                <span class="stars">★★★★☆</span>
+                <a class="rating-count" href="#">43 ratings</a>
+              </div>
+              <div class="cafe-loc">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                20 Old St, EC1
+              </div>
+              <span class="cafe-tag">Vegetarian</span>
+              <p class="cafe-desc">The Table Cafe is located in Southwark and is said to be one of South Bank's hidden gems. It has a groundbreaking record for the homeless charity St Mungo's. The Table Cafe is committed to sourcing <em>quality</em> ingredients.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map -->
+    <section class="map-section" id="map">
+      <div class="wrap">
+        <h2>View in <span class="accent">Map</span></h2>
+        <div id="cafes-map"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- #footer -->
+  <footer role="contentinfo" id="footer" title="Footer of page">
+    <article class="w3-container">
+      <h3>Social</h3>
+      <ul class="social-row">
+  <li>
+    <a href="https://www.facebook.com">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+  </li>
+
+  <li>
+    <a href="https://www.twitter.com">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a>
+  </li>
+
+  <li>
+    <a href="https://www.instagram.com">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </li>
+</ul>
+    </article>
+    <!-- #copyright -->
+    <div id="copyright" title="Copyright information for website" class="w3-center">
+      <p>&copy; <span id="currentDate"></span> Cafes in London. By <span class="theme-color">Leroy Russell</span></p>
+    </div> <!-- End #copyrght -->
+
+  </footer> 
+  <!-- End #footer -->
+
+  <!-- Scripts -->
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>  
+    
+  <script>
+    // ---- sticky tab active state ----
+    const tabLinks = document.querySelectorAll('#tabs a');
+    const cafesSection = document.getElementById('cafes');
+    const mapSection = document.getElementById('map');
+    function updateTabs() {
+      const y = window.scrollY + 120;
+      const active = y >= mapSection.offsetTop ? 'map' : 'cafes';
+      tabLinks.forEach((a) => a.classList.toggle('is-active', a.dataset.tab === active));
+    }
+    document.addEventListener('scroll', updateTabs, { passive: true });
+    updateTabs();
+
+    // ---- Leaflet map ----
+    const map = L.map('cafes-map').setView([51.5074, -0.1278], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const cafes = [
+      { name: 'Hard Rock Cafe', coords: [51.5058, -0.1512] },
+      { name: 'Gallery Cafe', coords: [51.5285, -0.0453] },
+      { name: 'Regency Cafe', coords: [51.4931, -0.1345] },
+      { name: 'The Table Cafe', coords: [51.5064, -0.0996] },
+    ];
+    cafes.forEach((c) => L.marker(c.coords).addTo(map).bindPopup(c.name));
+
+    // ---- floating menu button + left drawer ----
+    const menuFab = document.getElementById('menuFab');
+    const drawer = document.getElementById('siteDrawer');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    const drawerClose = document.getElementById('drawerClose');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      drawerBackdrop.classList.add('is-open');
+      drawer.setAttribute('aria-hidden', 'false');
+      menuFab.setAttribute('aria-expanded', 'true');
+      drawer.querySelector('.drawer-link')?.focus();
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      drawerBackdrop.classList.remove('is-open');
+      drawer.setAttribute('aria-hidden', 'true');
+      menuFab.setAttribute('aria-expanded', 'false');
+      menuFab.focus();
+    }
+
+    function handleResize() {
+      if (!drawer) return;
+
+      if (window.innerWidth > 700) {
+        closeDrawer();
+      }
+    }
+
+    // Run on initial page load
+    handleResize();
+
+    // Run whenever window size changes
+    window.addEventListener('resize', handleResize);
+
+    menuFab.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    drawerBackdrop.addEventListener('click', closeDrawer);
+    drawer.querySelectorAll('.drawer-link').forEach((link) => link.addEventListener('click', closeDrawer));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    });
+  </script>
+</body>
+</html>
