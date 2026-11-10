@@ -85,6 +85,8 @@ p:last-child{margin-bottom:0;}
 .tabs a.is-active{ background:var(--paper); color:var(--ink); }
 .tabs .spacer{ flex:1; background:var(--red); }
 
+#tabs, #main-content { max-width: 1380px; margin: auto;}
+
 /* ---------- featured section ---------- */
 .featured{ background:var(--grey-bg); padding:80px 0 90px; }
 .featured h2{
