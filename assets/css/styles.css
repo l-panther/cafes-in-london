@@ -14,7 +14,7 @@
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.75;}
+body{margin:0;font-family:var(--font-body);background:#000;color:var(--ink);background:var(--paper);line-height:1.75;}
 img,svg{max-width:100%;display:block;}
 a{color:inherit;}
 .wrap{max-width:1000px;margin:0 auto;padding:0 32px;}
